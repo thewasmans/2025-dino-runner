@@ -919,7 +919,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 71257146261893700, guid: c9e2e76d9c8aaf140a13fee011ddf6a5, type: 3}
       propertyPath: <MaxVertical>k__BackingField
-      value: 2
+      value: 5.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 71257146261893700, guid: c9e2e76d9c8aaf140a13fee011ddf6a5, type: 3}
+      propertyPath: <MinVertical>k__BackingField
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 71257146261893700, guid: c9e2e76d9c8aaf140a13fee011ddf6a5, type: 3}
       propertyPath: <SpeedCrouch>k__BackingField

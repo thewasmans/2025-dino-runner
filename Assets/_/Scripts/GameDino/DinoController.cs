@@ -1,18 +1,25 @@
 using Unity.Collections;
-using UnityEditor;
 using UnityEngine;
 
 public class DinoController : BGCManager
 {
-    [field: SerializeField] public float SpeedJump { get; private set; } = 3.0f;
-    [field: SerializeField] public float SpeedFall { get; private set; } = 2.0f;
-    [field: SerializeField] public float SpeedCrouch { get; private set; } = 6.0f;
-    [field: SerializeField] public float MaxVertical { get; private set; } = 1.0f;
-    [field: SerializeField] public float MinVertical { get; private set; } = 0.0f;
     [field: SerializeField] public GameObject DinoCharacter { get; private set; }
     [field: SerializeField, ReadOnly] public bool MoveUp { get; private set; }
     [field: SerializeField, ReadOnly] public bool MoveFall { get; private set; }
     [field: SerializeField, ReadOnly] public bool MoveCrouch { get; private set; }
+    public Vector3 InitialPosition { get; private set; }
+    private GameData _gameData;
+
+    public override void Initialize(BGCGameManager gameManager)
+    {
+        base.Initialize(gameManager);
+        InitialPosition = transform.position;
+        if (!(gameManager.GameData is GameData))
+        {
+            throw new BGCException($"[ {nameof(DinoController)} ] The {nameof(gameManager.GameData)} referenced in the inspector must be a {(nameof(_gameData))}");
+        }
+        _gameData = GameManager.GameData as GameData;
+    }
 
     void Update()
     {
@@ -30,9 +37,9 @@ public class DinoController : BGCManager
 
         if (MoveUp)
         {
-            if (DinoCharacter.transform.position.y <= MaxVertical)
+            if (DinoCharacter.transform.position.y <= _gameData.MaxVertical)
             {
-                DinoCharacter.transform.position += Vector3.up * Time.deltaTime * SpeedJump;
+                DinoCharacter.transform.position += Vector3.up * Time.deltaTime * _gameData.SpeedJump;
             }
             else
             {
@@ -42,9 +49,9 @@ public class DinoController : BGCManager
         }
         else if (MoveFall)
         {
-            if (DinoCharacter.transform.position.y >= MinVertical)
+            if (DinoCharacter.transform.position.y >= _gameData.MinVertical)
             {
-                DinoCharacter.transform.position -= Vector3.up * Time.deltaTime * SpeedFall;
+                DinoCharacter.transform.position -= Vector3.up * Time.deltaTime * _gameData.SpeedFall;
             }
             else
             {
@@ -53,24 +60,14 @@ public class DinoController : BGCManager
         }
         else if (MoveCrouch)
         {
-            if (DinoCharacter.transform.position.y >= MinVertical)
+            if (DinoCharacter.transform.position.y >= _gameData.MinVertical)
             {
-                DinoCharacter.transform.position -= Vector3.up * Time.deltaTime * SpeedCrouch;
+                DinoCharacter.transform.position -= Vector3.up * Time.deltaTime * _gameData.SpeedCrouch;
             }
             else
             {
                 MoveCrouch = false;
             }
         }
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-
-        var size = Vector3.one + Vector3.up * MaxVertical;
-        Gizmos.DrawWireCube(DinoCharacter.transform.position + Vector3.one, size);
-
-        // Gizmos.DrawCube(Vector3.zero, Vector3.one * 10)
     }
 }

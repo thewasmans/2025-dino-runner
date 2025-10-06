@@ -4,4 +4,11 @@ using UnityEngine;
 
 public class GameData : BGCGameData
 {
+     [Header("Character Data")]
+    [field: SerializeField] public float SpeedJump { get; private set; } = 10.0f;
+    [field: SerializeField] public float SpeedFall { get; private set; } = 8.0f;
+    [field: SerializeField] public float SpeedCrouch { get; private set; } = 10.0f;
+    [field: SerializeField] public float MaxVertical { get; private set; } = 2.0f;
+    [field: SerializeField] public float MinVertical { get; private set; } = 0.0f;
+    [field: SerializeField] public float VerticalSizeCharacter { get; private set; } = 2.0f;
 }
