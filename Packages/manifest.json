@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.brol-game-studio.core": "https://github.com/thewasmans/2025-unity-bol-game-studio.git#bgs-core",
     "com.dbrizov.naughtyattributes": "https://github.com/dbrizov/NaughtyAttributes.git#upm",
     "com.marijnzwemmer.unity-toolbar-extender": "https://github.com/marijnz/unity-toolbar-extender.git",
     "com.unity.collab-proxy": "2.9.3",
