@@ -1,24 +1,17 @@
 using Unity.Collections;
 using UnityEngine;
 
-public class DinoController : BGCManager
+public class DinoController : Manager
 {
     [field: SerializeField] public GameObject DinoCharacter { get; private set; }
     [field: SerializeField, ReadOnly] public bool MoveUp { get; private set; }
     [field: SerializeField, ReadOnly] public bool MoveFall { get; private set; }
     [field: SerializeField, ReadOnly] public bool MoveCrouch { get; private set; }
     public Vector3 InitialPosition { get; private set; }
-    private GameData _gameData;
 
-    public override void Initialize(BGCGameManager gameManager)
+    public override void Initialize()
     {
-        base.Initialize(gameManager);
-        InitialPosition = transform.position;
-        if (!(gameManager.GameData is GameData))
-        {
-            throw new BGCException($"[ {nameof(DinoController)} ] The {nameof(gameManager.GameData)} referenced in the inspector must be a {(nameof(_gameData))}");
-        }
-        _gameData = GameManager.GameData as GameData;
+        InitialPosition = transform.position; 
     }
 
     void Update()
@@ -37,9 +30,9 @@ public class DinoController : BGCManager
 
         if (MoveUp)
         {
-            if (DinoCharacter.transform.position.y <= _gameData.MaxVertical)
+            if (DinoCharacter.transform.position.y <= GameData.MaxVertical)
             {
-                DinoCharacter.transform.position += Vector3.up * Time.deltaTime * _gameData.SpeedJump;
+                DinoCharacter.transform.position += Vector3.up * Time.deltaTime * GameData.SpeedJump;
             }
             else
             {
@@ -49,9 +42,9 @@ public class DinoController : BGCManager
         }
         else if (MoveFall)
         {
-            if (DinoCharacter.transform.position.y >= _gameData.MinVertical)
+            if (DinoCharacter.transform.position.y >= GameData.MinVertical)
             {
-                DinoCharacter.transform.position -= Vector3.up * Time.deltaTime * _gameData.SpeedFall;
+                DinoCharacter.transform.position -= Vector3.up * Time.deltaTime * GameData.SpeedFall;
             }
             else
             {
@@ -60,9 +53,9 @@ public class DinoController : BGCManager
         }
         else if (MoveCrouch)
         {
-            if (DinoCharacter.transform.position.y >= _gameData.MinVertical)
+            if (DinoCharacter.transform.position.y >= GameData.MinVertical)
             {
-                DinoCharacter.transform.position -= Vector3.up * Time.deltaTime * _gameData.SpeedCrouch;
+                DinoCharacter.transform.position -= Vector3.up * Time.deltaTime * GameData.SpeedCrouch;
             }
             else
             {
