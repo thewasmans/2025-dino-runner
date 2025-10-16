@@ -8,16 +8,21 @@ public class CactusManager : Manager
     [field: SerializeField] public Transform ParentCactus { get; private set; }
     [field: SerializeField] public Transform SpawnPoint { get; private set; }
     [field: SerializeField] public Transform OutViewPoint { get; private set; }
+    [field: SerializeField] public Timer Timer { get; private set; }
     public List<GameObject> Cactus = new();
 
     public override void Initialize()
     {
-        SpawnCactus();
-    }
-
-    void Update()
-    {
-        UpdateCactus(Time.deltaTime);
+        Timer.Timeout += () =>
+        {
+            SpawnCactus();
+        };
+        Timer.StartTimer(GameData.WaitingTimeToSpawnCactus);
+        GetManager<TimeManager>().TimeUpdated += deltaTime =>
+        {
+            Timer.Progress(deltaTime);
+            UpdateCactus(deltaTime);
+        };
     }
 
     [Button]
