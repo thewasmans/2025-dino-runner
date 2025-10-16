@@ -11,12 +11,12 @@ public class DinoController : Manager
 
     public override void Initialize()
     {
-        InitialPosition = transform.position; 
+        InitialPosition = transform.position;
     }
 
     void Update()
     {
-        if (!MoveUp && Input.GetKey(KeyCode.UpArrow))
+        if (!MoveUp && Input.GetKeyDown(KeyCode.UpArrow))
         {
             MoveUp = true;
         }
@@ -28,7 +28,7 @@ public class DinoController : Manager
             MoveUp = false;
         }
 
-        if (MoveUp)
+        if (MoveUp && !MoveFall)
         {
             if (DinoCharacter.transform.position.y <= GameData.MaxVertical)
             {
@@ -40,7 +40,7 @@ public class DinoController : Manager
                 MoveFall = true;
             }
         }
-        else if (MoveFall)
+        if (MoveFall)
         {
             if (DinoCharacter.transform.position.y >= GameData.MinVertical)
             {
