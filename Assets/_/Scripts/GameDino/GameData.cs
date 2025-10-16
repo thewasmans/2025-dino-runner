@@ -13,4 +13,6 @@ public class GameData : BGCGameData
     [field: SerializeField] public float MaxVertical { get; private set; } = 2.0f;
     [field: SerializeField] public float MinVertical { get; private set; } = 0.0f;
     [field: SerializeField] public float VerticalSizeCharacter { get; private set; } = 2.0f;
+    [Header("Character Controller Data")]
+    [field: SerializeField] public float WaitingTimeToSpawnCactus { get; private set; } = 3f;
 }
