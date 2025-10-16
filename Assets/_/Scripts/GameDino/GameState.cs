@@ -1,8 +1,13 @@
+using UnityEngine;
+using NaughtyAttributes;
+
 [System.Serializable]
 public class GameState : BGCGameState
 {
-    public GameState(GameManager _gameManager)
-    {
+    [field: SerializeField, ReadOnly] public float SpeedMove { get; private set; }
 
+    public GameState(GameManager gameManager)
+    {
+        SpeedMove = gameManager.GameData.DefaultSpeedMove;
     }
 }
