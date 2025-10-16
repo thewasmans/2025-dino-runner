@@ -1,6 +1,8 @@
+using UnityEngine;
+
 public class GameManager : BGCGameManager<GameData>
 {
-    public GameState GameState {get; private set;}
+    [field: SerializeField] public GameState GameState { get; private set; }
 
     public override void Initialize(GameData _gameData)
     {
