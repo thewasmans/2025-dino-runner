@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GameData : BGCGameData
 {
-     [Header("Character Data")]
+    [Header("Main Data")]
+    [field: SerializeField] public float DefaultSpeedMove { get; private set; } = 2f;
+    [Header("Character Controller Data")]
     [field: SerializeField] public float SpeedJump { get; private set; } = 10.0f;
     [field: SerializeField] public float SpeedFall { get; private set; } = 8.0f;
     [field: SerializeField] public float SpeedCrouch { get; private set; } = 10.0f;
