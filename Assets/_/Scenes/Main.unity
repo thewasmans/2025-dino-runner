@@ -986,6 +986,10 @@ PrefabInstance:
       propertyPath: <ParentCactus>k__BackingField
       value: 
       objectReference: {fileID: 479952131}
+    - target: {fileID: 2835436159899466199, guid: c9e2e76d9c8aaf140a13fee011ddf6a5, type: 3}
+      propertyPath: <ParentBushCactus>k__BackingField
+      value: 
+      objectReference: {fileID: 479952131}
     - target: {fileID: 4687014552938040993, guid: c9e2e76d9c8aaf140a13fee011ddf6a5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

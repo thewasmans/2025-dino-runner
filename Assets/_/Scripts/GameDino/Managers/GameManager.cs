@@ -7,6 +7,7 @@ public class GameManager : BGCGameManager<GameData>
     public override void Initialize(GameData _gameData)
     {
         GameState = new GameState(this);
+        Random.InitState(GameState.SeedRandom);
         base.Initialize(GameData);
     }
 }

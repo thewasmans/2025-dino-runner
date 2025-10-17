@@ -5,7 +5,7 @@ using UnityEngine;
 public class CactusManager : Manager
 {
     [field: SerializeField] public GameObject Prefab_Cactus { get; private set; }
-    [field: SerializeField] public Transform ParentCactus { get; private set; }
+    [field: SerializeField] public Transform ParentBushCactus { get; private set; }
     [field: SerializeField] public Transform SpawnPoint { get; private set; }
     [field: SerializeField] public Transform OutViewPoint { get; private set; }
     [field: SerializeField] public Timer Timer { get; private set; }
@@ -13,10 +13,7 @@ public class CactusManager : Manager
 
     public override void Initialize()
     {
-        Timer.Timeout += () =>
-        {
-            SpawnCactus();
-        };
+        Timer.Timeout += () => SpawnRandomBushCactus();
         Timer.StartTimer(GameData.WaitingTimeToSpawnCactus);
         GetManager<TimeManager>().TimeUpdated += deltaTime =>
         {
@@ -26,9 +23,29 @@ public class CactusManager : Manager
     }
 
     [Button]
-    public void SpawnCactus()
+    public void SpawnRandomBushCactus()
     {
-        Cactus.Add(Instantiate(Prefab_Cactus, SpawnPoint.position, Quaternion.identity, ParentCactus));
+        float sizeCactus = GameData.SizeCactus;
+        GameObject instanceBush = new("BushCactus " + (Cactus.Count + 1));
+
+        int quantityCactus = Random.Range(GameData.MinQuantityCactus, GameData.MaxQuantityCactus + 1);
+
+        for (int i = 0; i < quantityCactus; i++)
+        {
+            InstantiateCactus(instanceBush.transform, Vector3.forward * i * sizeCactus);
+        }
+
+        instanceBush.transform.position = SpawnPoint.transform.position;
+        instanceBush.transform.parent = ParentBushCactus;
+
+        Cactus.Add(instanceBush);
+    }
+    public GameObject InstantiateCactus(Transform parent, Vector3 position, bool flipped = false)
+    {
+        return Instantiate(Prefab_Cactus,
+            position,
+            Quaternion.Euler((flipped ? 1 : 0) * 180 * Vector3.up),
+            parent);
     }
 
     public void UpdateCactus(float deltatime)
