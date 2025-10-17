@@ -975,6 +975,10 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 2835436159899466199, guid: c9e2e76d9c8aaf140a13fee011ddf6a5, type: 3}
+      propertyPath: <Prefab>k__BackingField
+      value: 
+      objectReference: {fileID: 87787977056995659, guid: 68119125e3ec281459b6b7d86f732301, type: 3}
+    - target: {fileID: 2835436159899466199, guid: c9e2e76d9c8aaf140a13fee011ddf6a5, type: 3}
       propertyPath: <SpawnPoint>k__BackingField
       value: 
       objectReference: {fileID: 1906108064}
@@ -984,6 +988,10 @@ PrefabInstance:
       objectReference: {fileID: 1623653121}
     - target: {fileID: 2835436159899466199, guid: c9e2e76d9c8aaf140a13fee011ddf6a5, type: 3}
       propertyPath: <ParentCactus>k__BackingField
+      value: 
+      objectReference: {fileID: 479952131}
+    - target: {fileID: 2835436159899466199, guid: c9e2e76d9c8aaf140a13fee011ddf6a5, type: 3}
+      propertyPath: <ParentInstances>k__BackingField
       value: 
       objectReference: {fileID: 479952131}
     - target: {fileID: 2835436159899466199, guid: c9e2e76d9c8aaf140a13fee011ddf6a5, type: 3}
