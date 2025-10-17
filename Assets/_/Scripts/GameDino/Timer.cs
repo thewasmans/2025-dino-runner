@@ -1,13 +1,16 @@
 using System;
+using NaughtyAttributes;
+using UnityEngine;
 
+[Serializable]
 public class Timer
 {
     public event Action Timeout;
-    public float TimeLeft { get; private set; }
-    public float WaitTime { get; private set; } = 1.0f;
+    [field: SerializeField, ReadOnly] public float TimeLeft { get; private set; }
+    [field: SerializeField] public float WaitTime { get; private set; } = 1.0f;
     public bool Started { get; private set; }
     public bool Finished { get; private set; }
-    public bool Oneshot { get; private set; } = false;
+    [field: SerializeField] public bool Oneshot { get; private set; } = false;
     public bool Completed => Finished && TimeLeft <= 0f;
 
     public void StartTimer(float waitTime = -1)
@@ -42,7 +45,7 @@ public class Timer
             Finished = true;
             Started = false;
             Timeout?.Invoke();
-            if (Oneshot)
+            if (!Oneshot)
                 StartTimer(WaitTime);
         }
     }

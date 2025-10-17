@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4ed8c9289a8ea342a5898d276299a4d, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  <SpeedJump>k__BackingField: 10
-  <SpeedFall>k__BackingField: 8
+  <DefaultSpeedMove>k__BackingField: 4
+  <SpeedJump>k__BackingField: 7
+  <SpeedFall>k__BackingField: 6
   <SpeedCrouch>k__BackingField: 10
-  <MaxVertical>k__BackingField: 2
+  <MaxVertical>k__BackingField: 3.5
   <MinVertical>k__BackingField: 0
   <VerticalSizeCharacter>k__BackingField: 2
+  <WaitingTimeToSpawnCactus>k__BackingField: 3
+  <MinQuantityCactus>k__BackingField: 1
+  <MaxQuantityCactus>k__BackingField: 3

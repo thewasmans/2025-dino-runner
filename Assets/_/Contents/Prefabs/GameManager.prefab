@@ -80,6 +80,7 @@ Transform:
   m_Children:
   - {fileID: 4178689880797660205}
   - {fileID: 6027269265760019257}
+  - {fileID: 3827571535993903101}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6252590212994049033
@@ -98,6 +99,58 @@ MonoBehaviour:
   <Managers>k__BackingField:
   - {fileID: 71257146261893700}
   - {fileID: 6257575060033045669}
+  - {fileID: 2835436159899466199}
+  <GameState>k__BackingField:
+    <SpeedMove>k__BackingField: 0
+--- !u!1 &1931137326701373767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3827571535993903101}
+  - component: {fileID: 2835436159899466199}
+  m_Layer: 0
+  m_Name: CactusManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3827571535993903101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931137326701373767}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4687014552938040993}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2835436159899466199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931137326701373767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d75ce3f0ed984fc40b01f5ba065b4e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Prefab_Cactus>k__BackingField: {fileID: 87787977056995659, guid: 68119125e3ec281459b6b7d86f732301, type: 3}
+  <ParentCactus>k__BackingField: {fileID: 0}
+  <SpawnPoint>k__BackingField: {fileID: 0}
+  <OutViewPoint>k__BackingField: {fileID: 0}
+  Cactus: []
 --- !u!1 &2962269580128705806
 GameObject:
   m_ObjectHideFlags: 0
