@@ -14,9 +14,11 @@ public class GameData : BGCGameData
     [field: SerializeField] public float MinVertical { get; private set; } = 0.0f;
 
     [field: SerializeField, Header("Character Controller Data")] public float VerticalSizeCharacter { get; private set; } = 2.0f;
-    [field: SerializeField] public float WaitingTimeToSpawnCactus { get; private set; } = 3f;
 
     [field: SerializeField, Header("Bush & Cactus Data")] public int MinQuantityCactus { get; private set; } = 1;
     [field: SerializeField] public int MaxQuantityCactus { get; private set; } = 3;
     [field: SerializeField] public float SizeCactus { get; private set; } = 1.55f;
+    [field: SerializeField] public float WaitingTimeSpawnCactus { get; private set; } = 3f;
+
+    [field: SerializeField, Header("Clouds Background Data")] public int WaitingTimeSpawnClouds { get; private set; } = 4;
 }

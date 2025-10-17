@@ -1,4 +1,3 @@
-using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -6,7 +5,7 @@ public class CactusSpawnManager : SpawnTimer
 {
     public override void Initialize()
     {
-        Initialize(GameData.WaitingTimeToSpawnCactus);
+        Initialize(GameData.WaitingTimeSpawnCactus);
     }
 
     [Button]
@@ -38,7 +37,7 @@ public class CactusSpawnManager : SpawnTimer
 
     public override void UpdateInstances(float deltaTime)
     {
-        foreach (var cactus in Instances.ToArray())
+        foreach (var cactus in Instances)
         {
             cactus.transform.position -= deltaTime * GameState.SpeedMove * Vector3.forward;
 
