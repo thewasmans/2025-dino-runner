@@ -16,7 +16,9 @@ MonoBehaviour:
   <SpeedJump>k__BackingField: 7
   <SpeedFall>k__BackingField: 6
   <SpeedCrouch>k__BackingField: 10
-  <MaxVertical>k__BackingField: 2
+  <MaxVertical>k__BackingField: 3.5
   <MinVertical>k__BackingField: 0
   <VerticalSizeCharacter>k__BackingField: 2
   <WaitingTimeToSpawnCactus>k__BackingField: 3
+  <MinQuantityCactus>k__BackingField: 1
+  <MaxQuantityCactus>k__BackingField: 3
