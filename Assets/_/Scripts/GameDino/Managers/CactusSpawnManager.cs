@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 
-public class CactusManager : Manager
+public class CactusSpawnManager : Manager
 {
     [field: SerializeField] public GameObject Prefab_Cactus { get; private set; }
     [field: SerializeField] public Transform ParentBushCactus { get; private set; }
@@ -26,13 +26,13 @@ public class CactusManager : Manager
     public void SpawnRandomBushCactus()
     {
         float sizeCactus = GameData.SizeCactus;
-        GameObject instanceBush = new("BushCactus " + (Cactus.Count + 1));
+        GameObject instanceBush = new("BushCactus");
 
         int quantityCactus = Random.Range(GameData.MinQuantityCactus, GameData.MaxQuantityCactus + 1);
 
         for (int i = 0; i < quantityCactus; i++)
         {
-            InstantiateCactus(instanceBush.transform, Vector3.forward * i * sizeCactus);
+            InstantiateCactus(instanceBush.transform, i * sizeCactus * Vector3.forward, Random.Range(0, 2) == 0);
         }
 
         instanceBush.transform.position = SpawnPoint.transform.position;
