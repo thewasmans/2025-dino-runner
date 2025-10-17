@@ -1,29 +1,16 @@
-using System.Collections.Generic;
+using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
 
-public class CactusSpawnManager : Manager
+public class CactusSpawnManager : SpawnTimer
 {
-    [field: SerializeField] public GameObject Prefab_Cactus { get; private set; }
-    [field: SerializeField] public Transform ParentBushCactus { get; private set; }
-    [field: SerializeField] public Transform SpawnPoint { get; private set; }
-    [field: SerializeField] public Transform OutViewPoint { get; private set; }
-    [field: SerializeField] public Timer Timer { get; private set; }
-    public List<GameObject> Cactus = new();
-
     public override void Initialize()
     {
-        Timer.Timeout += () => SpawnRandomBushCactus();
-        Timer.StartTimer(GameData.WaitingTimeToSpawnCactus);
-        GetManager<TimeManager>().TimeUpdated += deltaTime =>
-        {
-            Timer.Progress(deltaTime);
-            UpdateCactus(deltaTime);
-        };
+        Initialize(GameData.WaitingTimeToSpawnCactus);
     }
 
     [Button]
-    public void SpawnRandomBushCactus()
+    public override GameObject InstantiatePrefab()
     {
         float sizeCactus = GameData.SizeCactus;
         GameObject instanceBush = new("BushCactus");
@@ -36,28 +23,28 @@ public class CactusSpawnManager : Manager
         }
 
         instanceBush.transform.position = SpawnPoint.transform.position;
-        instanceBush.transform.parent = ParentBushCactus;
+        instanceBush.transform.parent = ParentInstances;
 
-        Cactus.Add(instanceBush);
+        return instanceBush;
     }
+
     public GameObject InstantiateCactus(Transform parent, Vector3 position, bool flipped = false)
     {
-        return Instantiate(Prefab_Cactus,
+        return Instantiate(Prefab,
             position,
             Quaternion.Euler((flipped ? 1 : 0) * 180 * Vector3.up),
             parent);
     }
 
-    public void UpdateCactus(float deltatime)
+    public override void UpdateInstances(float deltaTime)
     {
-        foreach (var cactus in Cactus.ToArray())
+        foreach (var cactus in Instances.ToArray())
         {
-            cactus.transform.position -= deltatime * GameState.SpeedMove * Vector3.forward;
+            cactus.transform.position -= deltaTime * GameState.SpeedMove * Vector3.forward;
 
             if (cactus.transform.position.z <= OutViewPoint.position.z)
             {
-                Cactus.Remove(cactus);
-                Destroy(cactus);
+                DestroyInstance(cactus);
             }
         }
     }
