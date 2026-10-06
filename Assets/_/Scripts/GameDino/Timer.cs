@@ -23,7 +23,7 @@ public class Timer
 
     public void StopTimer()
     {
-        Finished = true;
+        Finished = true; 
     }
 
     public void CancelTimer()
